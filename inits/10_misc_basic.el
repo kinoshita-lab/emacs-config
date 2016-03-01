@@ -78,9 +78,10 @@
 
 (setq auto-save-list-file-prefix nil)
 (setq create-lockfiles nil)
+
 ;; auto save
-(require 'auto-save-buffers)
-(run-with-idle-timer 0.5 t 'auto-save-buffers)
+;(require 'auto-save-buffers)
+;(run-with-idle-timer 0.5 t 'auto-save-buffers)
 
 
 ;; 俺設定
