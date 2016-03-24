@@ -42,12 +42,14 @@
              
 ;; M-x customizes
 (custom-set-variables
-
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(eww-search-prefix "https://www.google.co.jp/search?q=")
+ '(package-selected-packages
+   (quote
+	(merlin tuareg yasnippet-bundle yascroll which-key wakatime-mode tabbar sr-speedbar smooth-scroll smartparens ruby-tools ruby-end ruby-electric ruby-block ruby-additional robe rainbow-delimiters quack powerline popwin pdf-tools minimap js2-mode init-loader idle-require hydra helm-make helm-descbinds helm-clojuredocs helm-ag go-eldoc go-direx git-rebase-mode git-gutter git-commit-mode git-commit flycheck-rust dired+ darcula-theme ctags csharp-mode company-go color-theme-monokai clojure-mode-extra-font-locking clojure-cheatsheet clj-refactor cdb ccc cargo bind-key ag 4clojure)))
  '(projectile-enable-caching t)
  '(quack-default-program "gosh -i")
  '(quack-fontify-style nil)
@@ -65,3 +67,14 @@
  '(quack-tabs-are-evil-p nil)
  '(sr-speedbar-default-width 25))
 ;;; init.el ends here
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(quack-pltish-colon-keyword-face ((t (:foreground "DeepSkyBlue2" :weight bold))))
+ '(quack-pltish-comment-face ((t (:foreground "SpringGreen2"))))
+ '(quack-pltish-defn-face ((t (:foreground "SkyBlue2" :weight bold))))
+ '(quack-pltish-keyword-face ((t (:foreground "DeepSkyBlue1" :weight bold))))
+ '(quack-pltish-paren-face ((t (:foreground "LightSteelBlue1"))))
+ '(quack-pltish-selfeval-face ((t (:foreground "gray60")))))

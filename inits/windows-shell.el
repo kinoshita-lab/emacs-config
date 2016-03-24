@@ -1,2 +1,2 @@
-(setq shell-file-name "cmdproxy")
-(setenv "SHELL" shell-file-name)
+;; (setq shell-file-name "cmdproxy")
+;; (setenv "SHELL" shell-file-name)

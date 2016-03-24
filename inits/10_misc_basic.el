@@ -31,7 +31,7 @@
 
 
 ;; 細かい設定
-(savehist-mode 1) ;; ミニバッファの履歴の保存数を増やす
+;;(savehist-mode 1) ;; ミニバッファの履歴の保存数を増やす
 (show-paren-mode 1)
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (display-time)
