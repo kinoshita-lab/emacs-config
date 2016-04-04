@@ -12,9 +12,12 @@
 ;;; load path
 (setq load-path
       (cons (expand-file-name "~/.emacs.d/elpa") load-path))
+
 (setq load-path
       (cons (expand-file-name "~/.emacs.d/site-lisp") load-path))
 
+(setq load-path
+      (cons (expand-file-name "~/.emacs.d/site-lisp/howm-1.4.3") load-path))
 
 ;; add melpa and marmalade to elpa system
 (fset 'package-desc-vers 'package--ac-desc-version)
