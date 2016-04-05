@@ -27,18 +27,18 @@
 
 (require 'init-loader)
 ;;(setq init-loader-show-log-after-init nil)
-(defun init-loader-re-load (re dir &optional sort)
-  (let ((load-path (cons dir load-path)))
-    (dolist (el (init-loader--re-load-files re dir sort))
-      (condition-case e
-          (let ((time (car (benchmark-run (load (file-name-sans-extension el))))))
-            (init-loader-log (format "loaded %s. %s" (locate-library el) time)))
-        (error
-         ;; (init-loader-error-log (error-message-string e)) ；削除
-         (init-loader-error-log (format "%s. %s" (locate-library el) (error-message-string e))) ;追加
-         )))))
+;; (defun init-loader-re-load (re dir &optional sort)
+;;   (let ((load-path (cons dir load-path)))
+;;     (dolist (el (init-loader--re-load-files re dir sort))
+;;       (condition-case e
+;;           (let ((time (car (benchmark-run (load (file-name-sans-extension el))))))
+;;             (init-loader-log (format "loaded %s. %s" (locate-library el) time)))
+;;         (error
+;;          ;; (init-loader-error-log (error-message-string e)) ；削除
+;;          (init-loader-error-log (format "%s. %s" (locate-library el) (error-message-string e))) ;追加
+;;          )))))
 (init-loader-load "~/.emacs.d/inits")
-(init-loader-load)
+;;(init-loader-load)
              
 ;; M-x customizes
 (custom-set-variables
@@ -49,7 +49,7 @@
  '(eww-search-prefix "https://www.google.co.jp/search?q=")
  '(package-selected-packages
    (quote
-	(merlin tuareg yasnippet-bundle yascroll which-key wakatime-mode tabbar sr-speedbar smooth-scroll smartparens ruby-tools ruby-end ruby-electric ruby-block ruby-additional robe rainbow-delimiters quack powerline popwin pdf-tools minimap js2-mode init-loader idle-require hydra helm-make helm-descbinds helm-clojuredocs helm-ag go-eldoc go-direx git-rebase-mode git-gutter git-commit-mode git-commit flycheck-rust dired+ darcula-theme ctags csharp-mode company-go color-theme-monokai clojure-mode-extra-font-locking clojure-cheatsheet clj-refactor cdb ccc cargo bind-key ag 4clojure)))
+	(markdown-mode+ markdown-mode merlin tuareg yasnippet-bundle yascroll which-key wakatime-mode tabbar sr-speedbar smooth-scroll smartparens ruby-tools ruby-end ruby-electric ruby-block ruby-additional robe rainbow-delimiters quack powerline popwin pdf-tools minimap js2-mode init-loader idle-require hydra helm-make helm-descbinds helm-clojuredocs helm-ag go-eldoc go-direx git-rebase-mode git-gutter git-commit-mode git-commit flycheck-rust dired+ darcula-theme ctags csharp-mode company-go color-theme-monokai clojure-mode-extra-font-locking clojure-cheatsheet clj-refactor cdb ccc cargo bind-key ag 4clojure)))
  '(projectile-enable-caching t)
  '(quack-default-program "gosh -i")
  '(quack-fontify-style nil)

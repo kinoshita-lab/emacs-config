@@ -3,7 +3,7 @@
 
 ;; do not create backup files
 (setq backup-inhibited t)
-(setq make-backup-files nil)
+(setq make-backup-files 0)
 
 
 ;; scratchの初期メッセージ消去
@@ -41,7 +41,7 @@
 (setq gc-cons-threshold (* 10 gc-cons-threshold))
 (setq message-log-max 10000)
 ;;(setq enable-recursive-minibuffers t)
-(setq use-dialog-box nil)
+(setq use-dialog-box 0)
 (defalias 'message-box 'message)
 (setq history-length 1000)
 (setq echo-keystrokes 0.1)
@@ -55,7 +55,7 @@
 (require 'dired+)
 ;; sr-speedbar
 (require 'sr-speedbar)
-(setq sr-speedbar-right-side nil) 
+(setq sr-speedbar-right-side 0) 
 (defalias 'speedbar 'sr-speedbar-toggle)
 
 ;; 対応する括弧を表示する
@@ -71,13 +71,13 @@
 (scroll-bar-mode -1)
 
 ;; *.~ とかのバックアップファイルを作らない
-(setq make-backup-files nil)
+(setq make-backup-files 0)
 
 ;; .#* とかのバックアップファイルを作らない 
-(setq auto-save-default nil)
+(setq auto-save-default 0)
 
-(setq auto-save-list-file-prefix nil)
-(setq create-lockfiles nil)
+(setq auto-save-list-file-prefix 0)
+(setq create-lockfiles 0)
 
 ;; auto save
 ;(require 'auto-save-buffers)
@@ -86,7 +86,8 @@
 
 ;; 俺設定
 (global-set-key "\C-m" 'newline-and-indent)
-
+;; "C-t" でウィンドウを切り替える。初期値はtranspose-chars
+(define-key global-map (kbd "C-t") 'other-window)
 ;;; カーソルの点滅を止める
 (blink-cursor-mode 0)
 
@@ -114,7 +115,7 @@
 (setq hl-line-face 'hlline-face)
 ;; global-hl-line-modeをやめて高速化
 ;; via http://rubikitch.com/2015/05/14/global-hl-line-mode-timer/
-(global-hl-line-mode nil)
+(global-hl-line-mode 0)
 (defun global-hl-line-timer-function ()
   (global-hl-line-unhighlight-all)
   (let ((global-hl-line-mode t))
