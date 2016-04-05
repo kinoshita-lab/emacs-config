@@ -1,0 +1,10 @@
+(require 'howm)
+(autoload 'howm-menu "howm-mode" "Hitori Otegaru Wiki Modoki" t)
+(global-set-key "\C-c,," 'howm-menu)
+(setq howm-menu-lang 'ja)
+;; (setq howm-directory "~/dropbox/notes/howm")
+;; ;; メニューと履歴を検索対象から除外するために別ディレクトリへ
+;; (setq howm-keyword-file "~/dropbox/.howm/keys")
+;; (setq howm-history-file "~/dropbox/.howm/history")
+;; (setq howm-menu-file "~/dropbox/.howm/menu")
+;; (setq howm-file-name-format "%Y%m%d-%H%M%S.howm")
