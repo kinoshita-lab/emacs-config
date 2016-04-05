@@ -55,7 +55,7 @@
 (require 'dired+)
 ;; sr-speedbar
 (require 'sr-speedbar)
-(setq sr-speedbar-right-side 0) 
+(setq sr-speedbar-right-side nil)
 (defalias 'speedbar 'sr-speedbar-toggle)
 
 ;; 対応する括弧を表示する
