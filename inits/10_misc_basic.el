@@ -56,6 +56,7 @@
 ;; sr-speedbar
 (require 'sr-speedbar)
 (setq sr-speedbar-right-side nil)
+(setq speedbar-show-unknown-files t)
 (defalias 'speedbar 'sr-speedbar-toggle)
 
 ;; 対応する括弧を表示する

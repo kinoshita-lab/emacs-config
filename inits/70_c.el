@@ -15,11 +15,16 @@
              (setq indent-tabs-mode t)     ; インデントは空白文字で行う（TABコードを空白に変換）
              (c-set-offset 'innamespace 0)   ; namespace {}の中はインデントしない
              (c-set-offset 'arglist-close 0))) ; 関数の引数リストの閉じ括弧はインデントしない
+
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.ino\\'" . c++-mode))
               
 ;; ctags
 ;;;; for ctags.el
 (require 'ctags)
 (setq tags-revert-without-query t)
-(setq ctags-command "ctags -e -R")
+(setq ctags-command "ctags -Re --fields=+iaSt --extra=+q −−c++−kinds=+p")
 (global-set-key (kbd "<f5>") 'ctags-create-or-update-tags-table)
 (global-set-key (kbd "M-.") 'ctags-search)
+
+
