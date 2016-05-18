@@ -3,5 +3,5 @@ elpa/*
 url/*
 session.*
 abbrev_defs
-
+projectile-bookmarks.eld
 /server/*
