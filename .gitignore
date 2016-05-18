@@ -4,3 +4,4 @@ url/*
 session.*
 abbrev_defs
 
+/server/*
