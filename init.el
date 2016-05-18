@@ -75,6 +75,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-level-1 ((t (:inherit default))))
+ '(org-level-2 ((t (:inherit default :foreground "#A6E22E" :weight bold :height 1.2))))
+ '(org-level-3 ((t (:inherit default :foreground "#66D9EF" :weight bold :height 1.15))))
+ '(org-level-4 ((t (:inherit default :foreground "#E6DB74" :weight normal :height 1.1))))
+ '(org-level-5 ((t (:inherit default :foreground "#A1EFE4"))))
+ '(org-level-6 ((t (:inherit default :foreground "#A6E22E"))))
+ '(org-level-7 ((t (:inherit default :foreground "#F92672"))))
+ '(org-level-8 ((t (:inherit default :foreground "#66D9EF"))))
  '(quack-pltish-colon-keyword-face ((t (:foreground "DeepSkyBlue2" :weight bold))))
  '(quack-pltish-comment-face ((t (:foreground "SpringGreen2"))))
  '(quack-pltish-defn-face ((t (:foreground "SkyBlue2" :weight bold))))
