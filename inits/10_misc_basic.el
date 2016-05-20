@@ -143,3 +143,5 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 (setq uniquify-ignore-buffers-re "*[^*]+*")
+
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)

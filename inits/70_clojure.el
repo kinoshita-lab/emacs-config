@@ -4,7 +4,7 @@
 ;; clojure-mode で cider を有効に
 (add-hook 'clojure-mode-hook 'cider-mode)
 ;; eldoc を有効にする
-(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+;;(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 ;; 色々出さない
 (setq cider-repl-display-help-banner nil)
 

@@ -38,7 +38,7 @@
             (init-loader-log (format "loaded %s. %s" (locate-library el) time)))
         (error
          ;; (init-loader-error-log (error-message-string e)) ；削除
-         (init-loader-error-log (format "%s. %s" (locate-library el) (error-message-string e))) ;追加
+         ;;(init-loader-error-log (format "%s. %s" (locate-library el) (error-message-string e))) ;追加
          )))))
 (init-loader-load "~/.emacs.d/inits")
 (init-loader-load)
@@ -49,6 +49,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+	("5999e12c8070b9090a2a1bbcd02ec28906e150bb2cdce5ace4f965c76cf30476" default)))
  '(eww-search-prefix "https://www.google.co.jp/search?q=")
  '(package-selected-packages
    (quote
