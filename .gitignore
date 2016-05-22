@@ -1,4 +1,7 @@
 history
+bookmarks
+eshell/*
+*\#*
 elpa/*
 url/*
 session.*

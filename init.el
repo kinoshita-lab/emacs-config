@@ -6,9 +6,6 @@
 (require 'server)
 (unless (server-running-p)  (server-start))
 
-
-
-
 ;;; load path
 (setq load-path
       (cons (expand-file-name "~/.emacs.d/elpa") load-path))
@@ -41,7 +38,7 @@
 ;;          (init-loader-error-log (format "%s. %s" (locate-library el) (error-message-string e))) ;追加
 ;;          )))))
 (init-loader-load "~/.emacs.d/inits")
-(init-loader-load)
+;;(init-loader-load)
              
 ;; M-x customizes
 (custom-set-variables
