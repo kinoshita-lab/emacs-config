@@ -49,7 +49,7 @@
  '(eww-search-prefix "https://www.google.co.jp/search?q=")
  '(package-selected-packages
    (quote
-	(win-switch avy rainbow-delimiters tuareg helm-ag quack smartparens powerline tangotango-theme color-theme-tangotango dracula-theme company-irony markdown-mode+ merlin yasnippet-bundle yascroll tabbar sr-speedbar ruby-tools ruby-end ruby-electric ruby-block ruby-additional popwin minimap init-loader idle-require helm-make helm-descbinds go-eldoc go-direx git-rebase-mode git-gutter git-commit-mode git-commit flycheck-rust dired+ darcula-theme ctags csharp-mode company-go color-theme-monokai clojure-mode-extra-font-locking clojure-cheatsheet clj-refactor cdb ccc cargo bind-key ag 4clojure)))
+	(neotree ace-isearch win-switch avy rainbow-delimiters tuareg helm-ag quack smartparens powerline tangotango-theme color-theme-tangotango dracula-theme company-irony markdown-mode+ merlin yasnippet-bundle yascroll tabbar sr-speedbar ruby-tools ruby-end ruby-electric ruby-block ruby-additional popwin minimap init-loader idle-require helm-make helm-descbinds go-eldoc go-direx git-rebase-mode git-gutter git-commit-mode git-commit flycheck-rust dired+ darcula-theme ctags csharp-mode company-go color-theme-monokai clojure-mode-extra-font-locking clojure-cheatsheet clj-refactor cdb ccc cargo bind-key ag 4clojure)))
  '(projectile-enable-caching t)
  '(quack-default-program "gosh -i")
  '(quack-fontify-style nil)
