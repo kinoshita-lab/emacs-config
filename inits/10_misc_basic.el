@@ -53,11 +53,13 @@
 
 
 (require 'dired+)
-;; sr-speedbar
-(require 'sr-speedbar)
-(setq sr-speedbar-right-side nil)
-(setq speedbar-show-unknown-files t)
-(defalias 'speedbar 'sr-speedbar-toggle)
+;; sr-speedbar -> やめてneotree試し中
+;; (require 'sr-speedbar)
+;; (setq sr-speedbar-right-side nil)
+;; (setq speedbar-show-unknown-files t)
+;; (defalias 'speedbar 'sr-speedbar-toggle)
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
 
 ;; 対応する括弧を表示する
 (show-paren-mode t)
