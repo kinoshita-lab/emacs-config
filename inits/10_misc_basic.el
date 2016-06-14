@@ -149,3 +149,9 @@
 (setq uniquify-ignore-buffers-re "*[^*]+*")
 
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+;; 
+(setq scroll-conservatively 1)
+(setq scroll-margin 5)
+(setq next-screen-context-lines 5)
+(setq scroll-preserve-screen-position t)

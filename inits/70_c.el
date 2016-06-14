@@ -27,4 +27,16 @@
 (global-set-key (kbd "<f5>") 'ctags-create-or-update-tags-table)
 (global-set-key (kbd "M-.") 'ctags-search)
 
+;; irony
+(require 'irony)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+(add-to-list 'company-backends 'company-irony) ; backend追加
+(custom-set-variables '(irony-additional-clang-options '("-std=c++11")))
+;; Only needed on Windows
+(when (eq system-type 'windows-nt)
+  (setq w32-pipe-read-delay 0))
+
 
