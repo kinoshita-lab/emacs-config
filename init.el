@@ -51,7 +51,7 @@
  '(irony-additional-clang-options (quote ("-std=c++11")))
  '(package-selected-packages
    (quote
-	(helm-flycheck company-irony-c-headers ggtags company-irony yasnippet-bundle company-go yasnippet company neotree ace-isearch win-switch avy rainbow-delimiters tuareg helm-ag quack smartparens powerline tangotango-theme color-theme-tangotango dracula-theme markdown-mode+ merlin yascroll tabbar sr-speedbar ruby-tools ruby-end ruby-electric ruby-block ruby-additional popwin minimap init-loader idle-require helm-make helm-descbinds go-eldoc go-direx git-rebase-mode git-gutter git-commit-mode git-commit flycheck-rust dired+ darcula-theme ctags csharp-mode color-theme-monokai clojure-mode-extra-font-locking clojure-cheatsheet cdb ccc cargo bind-key ag 4clojure)))
+	(hydra helm-flycheck company-irony-c-headers ggtags company-irony yasnippet-bundle company-go yasnippet company neotree ace-isearch win-switch avy rainbow-delimiters tuareg helm-ag quack smartparens powerline tangotango-theme color-theme-tangotango dracula-theme markdown-mode+ merlin yascroll tabbar sr-speedbar ruby-tools ruby-end ruby-electric ruby-block ruby-additional popwin minimap init-loader idle-require helm-make helm-descbinds go-eldoc go-direx git-rebase-mode git-gutter git-commit-mode git-commit flycheck-rust dired+ darcula-theme ctags csharp-mode color-theme-monokai clojure-mode-extra-font-locking clojure-cheatsheet cdb ccc cargo bind-key ag 4clojure)))
  '(projectile-enable-caching t)
  '(quack-default-program "gosh -i")
  '(quack-fontify-style nil)
