@@ -8,3 +8,4 @@ session.*
 abbrev_defs
 projectile-bookmarks.eld
 /server/*
+/irony/*
