@@ -23,3 +23,4 @@
 
 
 
+(setq org-startup-truncated t)
