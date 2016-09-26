@@ -3,7 +3,7 @@
 
 ;; do not create backup files
 (setq backup-inhibited t)
-(setq make-backup-files nil)
+(setq make-backup-files 0)
 
 
 ;; scratchの初期メッセージ消去
@@ -41,7 +41,7 @@
 (setq gc-cons-threshold (* 10 gc-cons-threshold))
 (setq message-log-max 10000)
 ;;(setq enable-recursive-minibuffers t)
-(setq use-dialog-box nil)
+(setq use-dialog-box 0)
 (defalias 'message-box 'message)
 (setq history-length 1000)
 (setq echo-keystrokes 0.1)
@@ -53,10 +53,13 @@
 
 
 (require 'dired+)
-;; sr-speedbar
-(require 'sr-speedbar)
-(setq sr-speedbar-right-side nil) 
-(defalias 'speedbar 'sr-speedbar-toggle)
+;; sr-speedbar -> やめてneotree試し中
+;; (require 'sr-speedbar)
+;; (setq sr-speedbar-right-side nil)
+;; (setq speedbar-show-unknown-files t)
+;; (defalias 'speedbar 'sr-speedbar-toggle)
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
 
 ;; 対応する括弧を表示する
 (show-paren-mode t)
@@ -71,13 +74,13 @@
 (scroll-bar-mode -1)
 
 ;; *.~ とかのバックアップファイルを作らない
-(setq make-backup-files nil)
+(setq make-backup-files 0)
 
 ;; .#* とかのバックアップファイルを作らない 
-(setq auto-save-default nil)
+(setq auto-save-default 0)
 
-(setq auto-save-list-file-prefix nil)
-(setq create-lockfiles nil)
+(setq auto-save-list-file-prefix 0)
+(setq create-lockfiles 0)
 
 ;; auto save
 ;(require 'auto-save-buffers)
@@ -86,7 +89,8 @@
 
 ;; 俺設定
 (global-set-key "\C-m" 'newline-and-indent)
-
+;; "C-t" でウィンドウを切り替える。初期値はtranspose-chars
+(define-key global-map (kbd "C-t") 'other-window)
 ;;; カーソルの点滅を止める
 (blink-cursor-mode 0)
 
@@ -114,7 +118,7 @@
 (setq hl-line-face 'hlline-face)
 ;; global-hl-line-modeをやめて高速化
 ;; via http://rubikitch.com/2015/05/14/global-hl-line-mode-timer/
-(global-hl-line-mode nil)
+(global-hl-line-mode 0)
 (defun global-hl-line-timer-function ()
   (global-hl-line-unhighlight-all)
   (let ((global-hl-line-mode t))
@@ -143,3 +147,47 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 (setq uniquify-ignore-buffers-re "*[^*]+*")
+
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+;; 
+(setq scroll-conservatively 1)
+(setq scroll-margin 5)
+(setq next-screen-context-lines 5)
+(setq scroll-preserve-screen-position t)
+
+;; tabber
+(tabbar-mode 1)
+;; タブ上でマウスホイール操作無効
+(tabbar-mwheel-mode t)
+;; グループ化しない
+(setq tabbar-buffer-groups-function nil)
+;; 画像を使わないことで軽量化する
+(setq tabbar-use-images nil)
+;; キーに割り当てる
+(global-set-key (kbd "M-<right>") 'tabbar-forward-tab)
+(global-set-key (kbd "M-<left>") 'tabbar-backward-tab)
+(global-set-key (kbd "<C-tab>") 'tabbar-forward-tab)
+(global-set-key (kbd "<C-S-tab>") 'tabbar-backward-tab)
+
+;;----- 左側のボタンを消す
+(dolist (btn '(tabbar-buffer-home-button
+               tabbar-scroll-left-button
+               tabbar-scroll-right-button))
+  (set btn (cons (cons "" nil)
+                 (cons "" nil))))
+
+;;----- 表示するバッファ
+(defun my-tabbar-buffer-list ()
+  (delq nil
+        (mapcar #'(lambda (b)
+                    (cond
+                     ;; Always include the current buffer.
+                     ((eq (current-buffer) b) b)
+                     ((buffer-file-name b) b)
+                     ((char-equal ?\  (aref (buffer-name b) 0)) nil)
+                     ((equal "*scratch*" (buffer-name b)) b) ; *scratch*バッファは表示する
+                     ((char-equal ?* (aref (buffer-name b) 0)) nil) ; それ以外の * で始まるバッファは表示しない
+                     ((buffer-live-p b) b)))
+                (buffer-list))))
+(setq tabbar-buffer-list-function 'my-tabbar-buffer-list)

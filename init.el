@@ -4,10 +4,8 @@
 ;; server
 ; server start for emacs-client
 (require 'server)
+(server-force-delete)
 (unless (server-running-p)  (server-start))
-
-
-
 
 ;;; load path
 (setq load-path
@@ -30,18 +28,18 @@
 
 (require 'init-loader)
 ;;(setq init-loader-show-log-after-init nil)
-(defun init-loader-re-load (re dir &optional sort)
-  (let ((load-path (cons dir load-path)))
-    (dolist (el (init-loader--re-load-files re dir sort))
-      (condition-case e
-          (let ((time (car (benchmark-run (load (file-name-sans-extension el))))))
-            (init-loader-log (format "loaded %s. %s" (locate-library el) time)))
-        (error
-         ;; (init-loader-error-log (error-message-string e)) ；削除
-         (init-loader-error-log (format "%s. %s" (locate-library el) (error-message-string e))) ;追加
-         )))))
+;; (defun init-loader-re-load (re dir &optional sort)
+;;   (let ((load-path (cons dir load-path)))
+;;     (dolist (el (init-loader--re-load-files re dir sort))
+;;       (condition-case e
+;;           (let ((time (car (benchmark-run (load (file-name-sans-extension el))))))
+;;             (init-loader-log (format "loaded %s. %s" (locate-library el) time)))
+;;         (error
+;;          ;; (init-loader-error-log (error-message-string e)) ；削除
+;;          (init-loader-error-log (format "%s. %s" (locate-library el) (error-message-string e))) ;追加
+;;          )))))
 (init-loader-load "~/.emacs.d/inits")
-(init-loader-load)
+;;(init-loader-load)
              
 ;; M-x customizes
 (custom-set-variables
@@ -50,9 +48,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(eww-search-prefix "https://www.google.co.jp/search?q=")
+ '(irony-additional-clang-options (quote ("-std=c++11")))
  '(package-selected-packages
    (quote
-	(merlin tuareg yasnippet-bundle yascroll which-key wakatime-mode tabbar sr-speedbar smooth-scroll smartparens ruby-tools ruby-end ruby-electric ruby-block ruby-additional robe rainbow-delimiters quack powerline popwin pdf-tools minimap js2-mode init-loader idle-require hydra helm-make helm-descbinds helm-clojuredocs helm-ag go-eldoc go-direx git-rebase-mode git-gutter git-commit-mode git-commit flycheck-rust dired+ darcula-theme ctags csharp-mode company-go color-theme-monokai clojure-mode-extra-font-locking clojure-cheatsheet clj-refactor cdb ccc cargo bind-key ag 4clojure)))
+	(emmet-mode js2-mode company-tern slime-company slime hydra helm-flycheck company-irony-c-headers ggtags company-irony yasnippet-bundle company-go yasnippet company neotree ace-isearch win-switch avy rainbow-delimiters tuareg helm-ag quack smartparens powerline tangotango-theme color-theme-tangotango dracula-theme markdown-mode+ merlin yascroll tabbar sr-speedbar ruby-tools ruby-end ruby-electric ruby-block ruby-additional popwin minimap init-loader idle-require helm-make helm-descbinds go-eldoc go-direx git-rebase-mode git-gutter git-commit-mode git-commit flycheck-rust dired+ darcula-theme ctags csharp-mode color-theme-monokai clojure-mode-extra-font-locking clojure-cheatsheet cdb ccc cargo bind-key ag 4clojure)))
  '(projectile-enable-caching t)
  '(quack-default-program "gosh -i")
  '(quack-fontify-style nil)
@@ -75,6 +74,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-level-1 ((t (:inherit default))))
+ '(org-level-2 ((t (:inherit default :foreground "#A6E22E" :weight bold :height 1.2))))
+ '(org-level-3 ((t (:inherit default :foreground "#66D9EF" :weight bold :height 1.15))))
+ '(org-level-4 ((t (:inherit default :foreground "#E6DB74" :weight normal :height 1.1))))
+ '(org-level-5 ((t (:inherit default :foreground "#A1EFE4"))))
+ '(org-level-6 ((t (:inherit default :foreground "#A6E22E"))))
+ '(org-level-7 ((t (:inherit default :foreground "#F92672"))))
+ '(org-level-8 ((t (:inherit default :foreground "#66D9EF"))))
  '(quack-pltish-colon-keyword-face ((t (:foreground "DeepSkyBlue2" :weight bold))))
  '(quack-pltish-comment-face ((t (:foreground "SpringGreen2"))))
  '(quack-pltish-defn-face ((t (:foreground "SkyBlue2" :weight bold))))

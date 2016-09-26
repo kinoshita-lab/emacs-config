@@ -1,4 +1,4 @@
 ;;; color themes
 (require 'color-theme)
 (color-theme-initialize)
-(color-theme-monokai)
+(load-theme 'tangotango t)

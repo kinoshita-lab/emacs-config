@@ -17,16 +17,21 @@
 
 ;; emacsでGauche
 (setq scheme-program-name "gosh -i")
+;; schemeではtabを使わなくする
+(setq cmuscheme-load-hook
+	  '((lambda ()
+		  (setq tab-width 2)
+		  (setq indent-tabs-mode nil))))
 
+;; 別のウィンドウに gosh を動作させる
 (defun scheme-other-window ()
   "Run Gauche on other window"
   (interactive)
-  (split-window-below)
+  (split-window-horizontally (/ (frame-width) 2))
   (let ((buf-name (buffer-name (current-buffer))))
     (scheme-mode)
     (switch-to-buffer-other-window
      (get-buffer-create "*scheme*"))
-   
     (run-scheme scheme-program-name)
     (switch-to-buffer-other-window
      (get-buffer-create buf-name))))
@@ -97,3 +102,4 @@
 (put 'with-signal-handlers 'scheme-indent-function 1)
 (put 'with-locking-mutex 'scheme-indent-function 1)
 (put 'guard 'scheme-indent-function 1)
+
