@@ -9,3 +9,5 @@ abbrev_defs
 projectile-bookmarks.eld
 /server/*
 /irony/*
+.python-environments/
+recentf

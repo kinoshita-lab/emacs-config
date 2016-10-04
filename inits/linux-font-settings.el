@@ -3,10 +3,10 @@
 	  ;; theme これさきにやらないと変になる
 	  (load-theme 'tangotango t)
 	  ;; font
-	  (set-face-attribute 'default nil :family "Rounded M+ 1m" :weight 'light :height 180)
+	  (set-face-attribute 'default nil :family "Rounded M+ 1m" :weight 'medium :height 160)
 	  ;; 日本語あああイイイ
 	  (set-fontset-font nil 'japanese-jisx0208
-						(font-spec :family "Rounded M+ 1m light"))
+						(font-spec :family "Rounded M+ 1m medium"))
 	  (setq-default line-spacing .01)))
 	  
 
