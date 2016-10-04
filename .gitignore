@@ -9,3 +9,6 @@ abbrev_defs
 projectile-bookmarks.eld
 /server/*
 /irony/*
+/ac-comphist.dat
+curl-cookie-jar
+/*.cache

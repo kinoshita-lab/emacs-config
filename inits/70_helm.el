@@ -1,8 +1,4 @@
 (when (require 'helm-config nil t)
-  (require 'helm-ag)
-                    ; agのデフォルトのコマンドオプションを指定
-                    ; -nを消すとサブディレクトリも再帰的に検索します
-  (setq helm-ag-base-command "ag --nocolor --nogroup -n")
   (require 'helm-descbinds)
 
   (helm-descbinds-mode)
@@ -23,7 +19,6 @@
   (global-set-key (kbd "C-c h") 'helm-mini)
   (global-set-key (kbd "C-c b") 'helm-descbinds)
   (global-set-key (kbd "C-c o") 'helm-occur)
-  (global-set-key (kbd "C-c s") 'helm-ag)
   (global-set-key (kbd "C-c y") 'helm-show-kill-ring)
 
   ;; Disable helm in some functions
