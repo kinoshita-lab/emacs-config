@@ -51,7 +51,7 @@
  '(irony-additional-clang-options (quote ("-std=c++11")))
  '(package-selected-packages
    (quote
-	(counsel jedi recentf-ext wandbox ripgrep racer company-racer rust-mode smartparens zeal-at-point emmet-mode js2-mode company-tern slime-company slime hydra helm-flycheck company-irony-c-headers ggtags company-irony yasnippet-bundle company-go yasnippet company neotree ace-isearch win-switch avy rainbow-delimiters tuareg helm-ag quack powerline tangotango-theme color-theme-tangotango dracula-theme markdown-mode+ merlin yascroll tabbar sr-speedbar ruby-tools ruby-end ruby-electric ruby-block ruby-additional popwin minimap init-loader idle-require helm-make helm-descbinds go-eldoc go-direx git-rebase-mode git-gutter git-commit-mode git-commit flycheck-rust dired+ darcula-theme ctags csharp-mode color-theme-monokai clojure-mode-extra-font-locking clojure-cheatsheet cdb ccc cargo bind-key ag 4clojure)))
+	(counsel jedi recentf-ext wandbox ripgrep racer company-racer rust-mode smartparens zeal-at-point emmet-mode js2-mode company-tern slime-company slime hydra company-irony-c-headers ggtags company-irony yasnippet-bundle company-go yasnippet company neotree win-switch avy rainbow-delimiters tuareg quack powerline tangotango-theme color-theme-tangotango dracula-theme markdown-mode+ merlin yascroll tabbar sr-speedbar ruby-tools ruby-end ruby-electric ruby-block ruby-additional popwin minimap init-loader idle-require go-eldoc go-direx git-rebase-mode git-gutter git-commit-mode git-commit flycheck-rust dired+ darcula-theme ctags csharp-mode color-theme-monokai clojure-mode-extra-font-locking cdb ccc cargo bind-key ag 4clojure)))
  '(projectile-enable-caching t)
  '(quack-default-program "gosh -i")
  '(quack-fontify-style nil)
