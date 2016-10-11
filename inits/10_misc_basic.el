@@ -207,3 +207,6 @@
 (setq ripgrep-executable "e:/share/bin/rg.exe")
 ;;; rgに渡すオプション
 (setq ripgrep-arguments '("-S"))
+
+;; recentf-ext
+(require 'recentf-ext)
