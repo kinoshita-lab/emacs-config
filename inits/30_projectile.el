@@ -8,6 +8,6 @@
   ;; 大きいプロジェクトだと劇的に速度が改善するらしい.
 (setq projectile-enable-caching t)
 
-(when (executable-find "gtags")
-   (setq projectile-tags-file-name "GTAGS")
-   (setq projectile-tags-command "gtags"))
+;; (when (executable-find "gtags")
+;;    (setq projectile-tags-file-name "GTAGS")
+;;    (setq projectile-tags-command "gtags"))

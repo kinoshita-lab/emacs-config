@@ -1,20 +1,29 @@
 ;;;; C
 ;; 自動改行+インデント
 (add-hook 'c-mode-common-hook
+
           '(lambda ()
              ;; センテンスの終了である ';' を入力したら、自動改行+インデント
              (c-toggle-auto-hungry-state 1)
+			 (c-toggle-auto-state 1)
              ;; RET キーで自動改行+インデント
              (define-key c-mode-base-map "\C-m" 'newline-and-indent)))
              
 (add-hook 'c-mode-hook '(lambda () (setq tab-width 4)))
 (add-hook 'c++-mode-hook '(lambda () (setq tab-width 4)))
+;; C++ style
 (add-hook 'c++-mode-hook
           '(lambda()
-             (c-set-style "k&r")
-             (setq indent-tabs-mode t)     ; インデントは空白文字で行う（TABコードを空白に変換）
+             (c-set-style "stroustrup")
+             (setq indent-tabs-mode t)     
              (c-set-offset 'innamespace 0)   ; namespace {}の中はインデントしない
-             (c-set-offset 'arglist-close 0))) ; 関数の引数リストの閉じ括弧はインデントしない
+             (c-set-offset 'arglist-close 0) ; 関数の引数リストの閉じ括弧はインデントしない
+             (define-key c++-mode-map "/" 'self-insert-command) ; javadoc風コメント
+             (setq comment-style 'extra-line)
+             (setq comment-continue " * ")
+             (setq comment-start "/** ")
+             (setq comment-end " */")
+             ))
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.ino\\'" . c++-mode))
@@ -39,7 +48,7 @@
 (setq ggtags-completing-read-function nil)
  
 ;; use eldoc
-(setq-local eldoc-documentation-function #'ggtags-eldoc-function)
+;;(setq-local eldoc-documentation-function #'ggtags-eldoc-function)
  
 ;; imenu
 (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
@@ -53,6 +62,16 @@
  
 (define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
 
+(require 'helm-gtags)
+(add-hook 'c-mode-hook 'helm-gtags-mode)
+
+;; key bindings
+(add-hook 'helm-gtags-mode-hook
+          '(lambda ()
+              (local-set-key (kbd "M-t") 'helm-gtags-find-tag)
+              (local-set-key (kbd "M-r") 'helm-gtags-find-rtag)
+              (local-set-key (kbd "M-s") 'helm-gtags-find-symbol)
+              (local-set-key (kbd "C-t") 'helm-gtags-pop-stack)))
 ;; irony
 (require 'irony)
 (add-hook 'c-mode-hook 'irony-mode)
@@ -68,11 +87,13 @@
 (add-hook 'irony-mode-hook 'my-irony-mode-hook)
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 (add-to-list 'company-backends 'company-irony) ; backend追加
-(custom-set-variables '(irony-additional-clang-options '("-std=c++11")))
-(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
-(setq company-backends (delete 'company-semantic company-backends))
 
-(setq company-idle-delay 0)
+(setq irony-additional-clang-options (quote ("-std=c++11" "-stdlib=libc++")))
+(setq company-backends (delete 'company-semantic company-backends))
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
+
+(setq company-idle-delay .3)
 
 
 (require 'company-irony-c-headers)
@@ -85,4 +106,51 @@
 
 
 ;; flycheck
-(add-hook 'c-mode-common-hook 'flycheck-mode)
+;;(add-hook 'c-mode-common-hook 'flycheck-mode)
+
+
+(require 'gud)
+
+(setq gdb-many-windows t)
+(setq gdb-use-separate-io-buffer t)
+(add-hook
+ 'gdb-mode-hook
+ '(lambda ()
+    (gud-tooltip-mode t)
+    (gud-def gud-break-main "break main" nil "Set breakpoint at main.")
+ ))
+(setq gud-tooltip-echo-area nil)
+
+(define-key gud-minor-mode-map (kbd "<f1>") 'gud-print)
+(define-key gud-minor-mode-map (kbd "<S-f1>") 'gud-watch)
+(define-key gud-minor-mode-map (kbd "<f2>") 'gud-refresh)
+(define-key gud-minor-mode-map (kbd "<f5>") 'gud-cont)
+(define-key gud-minor-mode-map (kbd "<S-f5>") 'gud-kill)
+(define-key gud-minor-mode-map (kbd "<f6>") 'gud-until)
+(define-key gud-minor-mode-map (kbd "<f9>") 'gdb-set-clear-breakpoint)
+(define-key gud-minor-mode-map (kbd "<S-f9>") 'gud-break-main)
+(define-key gud-minor-mode-map (kbd "<f10>") 'gud-next)
+(define-key gud-minor-mode-map (kbd "<f11>") 'gud-step)
+(define-key gud-minor-mode-map (kbd "<C-f10>") 'gud-until)
+(define-key gud-minor-mode-map (kbd "<C-f11>") 'gud-finish)
+(define-key gud-minor-mode-map (kbd "<S-f11>") 'gud-finish)
+
+(defun gdb-set-clear-breakpoint ()
+  (interactive)
+  (if (or (buffer-file-name) (eq major-mode 'gdb-assembler-mode))
+      (if (or
+           (let ((start (- (line-beginning-position) 1))
+                 (end (+ (line-end-position) 1)))
+             (catch 'breakpoint
+               (dolist (overlay (overlays-in start end))
+                 (if (overlay-get overlay 'put-break)
+                     (throw 'breakpoint t)))))
+           (eq (car (fringe-bitmaps-at-pos)) 'breakpoint))
+          (gud-remove nil)
+        (gud-break nil))))
+
+(defun gud-kill ()
+  "Kill gdb process."
+  (interactive)
+  (with-current-buffer gud-comint-buffer (comint-skip-input))
+  (kill-process (get-buffer-process gud-comint-buffer)))

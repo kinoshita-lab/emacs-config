@@ -54,12 +54,12 @@
 
 (require 'dired+)
 ;; sr-speedbar -> やめてneotree試し中
-;; (require 'sr-speedbar)
-;; (setq sr-speedbar-right-side nil)
-;; (setq speedbar-show-unknown-files t)
-;; (defalias 'speedbar 'sr-speedbar-toggle)
-(require 'neotree)
-(global-set-key [f8] 'neotree-toggle)
+(require 'sr-speedbar)
+(setq sr-speedbar-right-side nil)
+(setq speedbar-show-unknown-files t)
+(defalias 'speedbar 'sr-speedbar-toggle)
+;; (require 'neotree)
+;; (global-set-key [f8] 'neotree-toggle)
 
 ;; 対応する括弧を表示する
 (show-paren-mode t)
@@ -191,3 +191,17 @@
                      ((buffer-live-p b) b)))
                 (buffer-list))))
 (setq tabbar-buffer-list-function 'my-tabbar-buffer-list)
+
+;;再起動時に色々復元
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(desktop-save-mode t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
