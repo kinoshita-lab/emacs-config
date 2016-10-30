@@ -1,0 +1,17 @@
+(if window-system
+	(progn
+	  ;; theme これさきにやらないと変になる
+	  (load-theme 'tangotango t)
+	  ;; font
+<<<<<<< HEAD
+	  (set-face-attribute 'default nil :family "Rounded M+ 1m" :weight 'light :height 140)
+=======
+	  (set-face-attribute 'default nil :family "Rounded M+ 1m" :weight 'medium :height 160)
+>>>>>>> 47fa2253bb606afb5fc25cfb6bcf45b265a0df34
+	  ;; 日本語あああイイイ
+	  (set-fontset-font nil 'japanese-jisx0208
+						(font-spec :family "Rounded M+ 1m medium"))
+	  (setq-default line-spacing .01)))
+	  
+
+
