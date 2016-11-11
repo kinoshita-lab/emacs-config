@@ -1,3 +1,4 @@
+
 ;; remove beautiful opening screen
 (setq inhibit-startup-message t)
 
@@ -210,3 +211,4 @@
 
 ;; recentf-ext
 (require 'recentf-ext)
+

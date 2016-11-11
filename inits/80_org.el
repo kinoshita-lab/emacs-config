@@ -4,7 +4,7 @@
 
 ;; 会社
 (if (equal (get-host-name) "host1105")
-	(setq org-file "C:/Users/saita/Dropbox/org/index.org"))
+	(setq org-file "C:/Users/saita/Dropbox/notes/note.org"))
 
 ;; キー関係
 (global-set-key "\C-cl" 'org-store-link)
