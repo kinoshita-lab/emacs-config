@@ -9,3 +9,8 @@ abbrev_defs
 projectile-bookmarks.eld
 /server/*
 /irony/*
+.python-environments/
+recentf
+/ac-comphist.dat
+curl-cookie-jar
+/*.cache

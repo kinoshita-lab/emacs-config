@@ -1,7 +1,6 @@
 ;;;; C
 ;; 自動改行+インデント
 (add-hook 'c-mode-common-hook
-
           '(lambda ()
              ;; センテンスの終了である ';' を入力したら、自動改行+インデント
              (c-toggle-auto-hungry-state 1)
@@ -106,51 +105,20 @@
 
 
 ;; flycheck
-;;(add-hook 'c-mode-common-hook 'flycheck-mode)
+;; (add-hook 'c-mode-common-hook 'flycheck-mode)
+;; (add-hook 'c++-mode-hook (lambda()
+;;                            (setq flycheck-gcc-language-standard "c++11")
+;;                            (setq flycheck-clang-language-standard "c++11")))
+;; (defmacro flycheck-define-clike-checker (name command modes)
+;;   `(flycheck-define-checker ,(intern (format "%s" name))
+;;      ,(format "A %s checker using %s" name (car command))
+;;      :command (,@command source-inplace)
+;;      :error-patterns
+;;      ((warning line-start (file-name) ":" line ":" column ": 警告:" (message) line-end)
+;;       (error line-start (file-name) ":" line ":" column ": エラー:" (message) line-end))
+;;      :modes ',modes))
 
-
-(require 'gud)
-
-(setq gdb-many-windows t)
-(setq gdb-use-separate-io-buffer t)
-(add-hook
- 'gdb-mode-hook
- '(lambda ()
-    (gud-tooltip-mode t)
-    (gud-def gud-break-main "break main" nil "Set breakpoint at main.")
- ))
-(setq gud-tooltip-echo-area nil)
-
-(define-key gud-minor-mode-map (kbd "<f1>") 'gud-print)
-(define-key gud-minor-mode-map (kbd "<S-f1>") 'gud-watch)
-(define-key gud-minor-mode-map (kbd "<f2>") 'gud-refresh)
-(define-key gud-minor-mode-map (kbd "<f5>") 'gud-cont)
-(define-key gud-minor-mode-map (kbd "<S-f5>") 'gud-kill)
-(define-key gud-minor-mode-map (kbd "<f6>") 'gud-until)
-(define-key gud-minor-mode-map (kbd "<f9>") 'gdb-set-clear-breakpoint)
-(define-key gud-minor-mode-map (kbd "<S-f9>") 'gud-break-main)
-(define-key gud-minor-mode-map (kbd "<f10>") 'gud-next)
-(define-key gud-minor-mode-map (kbd "<f11>") 'gud-step)
-(define-key gud-minor-mode-map (kbd "<C-f10>") 'gud-until)
-(define-key gud-minor-mode-map (kbd "<C-f11>") 'gud-finish)
-(define-key gud-minor-mode-map (kbd "<S-f11>") 'gud-finish)
-
-(defun gdb-set-clear-breakpoint ()
-  (interactive)
-  (if (or (buffer-file-name) (eq major-mode 'gdb-assembler-mode))
-      (if (or
-           (let ((start (- (line-beginning-position) 1))
-                 (end (+ (line-end-position) 1)))
-             (catch 'breakpoint
-               (dolist (overlay (overlays-in start end))
-                 (if (overlay-get overlay 'put-break)
-                     (throw 'breakpoint t)))))
-           (eq (car (fringe-bitmaps-at-pos)) 'breakpoint))
-          (gud-remove nil)
-        (gud-break nil))))
-
-(defun gud-kill ()
-  "Kill gdb process."
-  (interactive)
-  (with-current-buffer gud-comint-buffer (comint-skip-input))
-  (kill-process (get-buffer-process gud-comint-buffer)))
+;; (flycheck-define-clike-checker c++-g++-ja
+;; 			       ("g++" "-fsyntax-only" "-Wall" "-Wextra" "-std=c++11")
+;; 			       c++-mode)
+;; (add-to-list 'flycheck-checkers 'c++-g++-ja)

@@ -8,9 +8,6 @@
 ;; 色々出さないw
 (setq cider-repl-display-help-banner nil)
 
-(require 'clojure-cheatsheet)
-(define-key clojure-mode-map (kbd "C-c C-h") #'clojure-cheatsheet)
-
 (setq cider-cljs-lein-repl
 	  "(do (require 'figwheel-sidecar.repl-api)
             (figwheel-sidecar.repl-api/start-figwheel!)

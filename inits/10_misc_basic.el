@@ -2,9 +2,9 @@
 (setq inhibit-startup-message t)
 
 ;; do not create backup files
-(setq backup-inhibited t)
-(setq make-backup-files 0)
-
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+(setq backup-directory-alist '((".*" . "~/.ehist")))
 
 ;; scratchの初期メッセージ消去
 (setq initial-scratch-message "")
@@ -53,7 +53,7 @@
 
 
 (require 'dired+)
-;; sr-speedbar -> やめてneotree試し中
+;;sr-speedbar -> やめてneotree試し中
 (require 'sr-speedbar)
 (setq sr-speedbar-right-side nil)
 (setq speedbar-show-unknown-files t)
@@ -192,16 +192,21 @@
                 (buffer-list))))
 (setq tabbar-buffer-list-function 'my-tabbar-buffer-list)
 
-;;再起動時に色々復元
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(desktop-save-mode t))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(add-to-list 'Info-directory-list "~/info/")
+(defun Info-find-node--info-ja (orig-fn filename &rest args)
+  (apply orig-fn
+         (pcase filename
+           ("emacs" "emacs245-ja")
+           (t filename))
+         args))
+(advice-add 'Info-find-node :around 'Info-find-node--info-ja) 
+
+;; ripgrep
+(require 'ripgrep)
+;;; rgバイナリの位置
+(setq ripgrep-executable "e:/share/bin/rg.exe")
+;;; rgに渡すオプション
+(setq ripgrep-arguments '("-S"))
+
+;; recentf-ext
+(require 'recentf-ext)
