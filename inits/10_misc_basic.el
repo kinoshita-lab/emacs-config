@@ -1,4 +1,3 @@
-
 ;; remove beautiful opening screen
 (setq inhibit-startup-message t)
 
@@ -31,8 +30,7 @@
 (require 'idle-require)
 
 
-;; 細かい設定
-;;(savehist-mode 1) ;; ミニバッファの履歴の保存数を増やす
+;; ;; 細かい設定
 (show-paren-mode 1)
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (display-time)
@@ -53,14 +51,12 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 
-(require 'dired+)
-;;sr-speedbar -> やめてneotree試し中
+;; (require 'dired+)
+;; ;;sr-speedbar -> やめてneotree試し中
 (require 'sr-speedbar)
 (setq sr-speedbar-right-side nil)
 (setq speedbar-show-unknown-files t)
 (defalias 'speedbar 'sr-speedbar-toggle)
-;; (require 'neotree)
-;; (global-set-key [f8] 'neotree-toggle)
 
 ;; 対応する括弧を表示する
 (show-paren-mode t)
@@ -73,20 +69,6 @@
 
 ;; スクロールバーいらない
 (scroll-bar-mode -1)
-
-;; *.~ とかのバックアップファイルを作らない
-(setq make-backup-files 0)
-
-;; .#* とかのバックアップファイルを作らない 
-(setq auto-save-default 0)
-
-(setq auto-save-list-file-prefix 0)
-(setq create-lockfiles 0)
-
-;; auto save
-;(require 'auto-save-buffers)
-;(run-with-idle-timer 0.5 t 'auto-save-buffers)
-
 
 ;; 俺設定
 (global-set-key "\C-m" 'newline-and-indent)
@@ -151,7 +133,7 @@
 
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
-;; 
+;; ;; 
 (setq scroll-conservatively 1)
 (setq scroll-margin 5)
 (setq next-screen-context-lines 5)

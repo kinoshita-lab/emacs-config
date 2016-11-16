@@ -1,5 +1,5 @@
 ; ivy
-(ivy-mode 1)
+;(ivy-mode 1)
 
 ;;; 下記は任意で有効化
 ;(global-set-key "\C-s" 'swiper)
