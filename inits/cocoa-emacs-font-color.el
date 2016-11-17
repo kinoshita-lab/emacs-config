@@ -14,5 +14,5 @@
 					;(set-face-attribute 'default nil :family "Envy Code B 10pt" :height 180)
 					(set-face-attribute 'default nil :family "Envy Code R" :height 180)
 
-                    (setq-default line-spacing .01)
+                    (setq-default line-spacing .1)
                     ))
