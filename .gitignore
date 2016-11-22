@@ -14,3 +14,4 @@ recentf
 /ac-comphist.dat
 curl-cookie-jar
 /*.cache
+.emacs*

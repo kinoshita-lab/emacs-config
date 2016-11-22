@@ -4,17 +4,25 @@
           '(lambda ()
              ;; センテンスの終了である ';' を入力したら、自動改行+インデント
              (c-toggle-auto-hungry-state 1)
+			 (c-toggle-auto-state 1)
              ;; RET キーで自動改行+インデント
              (define-key c-mode-base-map "\C-m" 'newline-and-indent)))
              
 (add-hook 'c-mode-hook '(lambda () (setq tab-width 4)))
 (add-hook 'c++-mode-hook '(lambda () (setq tab-width 4)))
+;; C++ style
 (add-hook 'c++-mode-hook
           '(lambda()
-             (c-set-style "k&r")
-             (setq indent-tabs-mode t)     ; インデントは空白文字で行う（TABコードを空白に変換）
+             (c-set-style "stroustrup")
+             (setq indent-tabs-mode t)     
              (c-set-offset 'innamespace 0)   ; namespace {}の中はインデントしない
-             (c-set-offset 'arglist-close 0))) ; 関数の引数リストの閉じ括弧はインデントしない
+             (c-set-offset 'arglist-close 0) ; 関数の引数リストの閉じ括弧はインデントしない
+             (define-key c++-mode-map "/" 'self-insert-command) ; javadoc風コメント
+             (setq comment-style 'extra-line)
+             (setq comment-continue " * ")
+             (setq comment-start "/** ")
+             (setq comment-end " */")
+             ))
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.ino\\'" . c++-mode))
@@ -39,7 +47,7 @@
 (setq ggtags-completing-read-function nil)
  
 ;; use eldoc
-(setq-local eldoc-documentation-function #'ggtags-eldoc-function)
+;;(setq-local eldoc-documentation-function #'ggtags-eldoc-function)
  
 ;; imenu
 (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
@@ -53,6 +61,16 @@
  
 (define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
 
+(require 'helm-gtags)
+(add-hook 'c-mode-hook 'helm-gtags-mode)
+
+;; key bindings
+(add-hook 'helm-gtags-mode-hook
+          '(lambda ()
+              (local-set-key (kbd "M-t") 'helm-gtags-find-tag)
+              (local-set-key (kbd "M-r") 'helm-gtags-find-rtag)
+              (local-set-key (kbd "M-s") 'helm-gtags-find-symbol)
+              (local-set-key (kbd "C-t") 'helm-gtags-pop-stack)))
 ;; irony
 (require 'irony)
 (add-hook 'c-mode-hook 'irony-mode)
@@ -68,11 +86,13 @@
 (add-hook 'irony-mode-hook 'my-irony-mode-hook)
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 (add-to-list 'company-backends 'company-irony) ; backend追加
-(custom-set-variables '(irony-additional-clang-options '("-std=c++11")))
-(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
-(setq company-backends (delete 'company-semantic company-backends))
 
-(setq company-idle-delay 0)
+(setq irony-additional-clang-options (quote ("-std=c++11" "-stdlib=libc++")))
+(setq company-backends (delete 'company-semantic company-backends))
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
+
+(setq company-idle-delay .3)
 
 
 (require 'company-irony-c-headers)
