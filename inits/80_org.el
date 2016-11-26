@@ -3,8 +3,8 @@
 (setq org-file "~/Dropbox/org/index.org")
 
 ;; 会社
-(if (equal (get-host-name) "host1105")
-	(setq org-file "C:/Users/saita/Dropbox/notes/note.org"))
+;; (if (equal (get-host-name) "host1105")
+;; 	(setq org-file "C:/Users/saita/Dropbox/notes/note.org"))
 
 ;; キー関係
 (global-set-key "\C-cl" 'org-store-link)

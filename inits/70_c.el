@@ -3,18 +3,17 @@
 (add-hook 'c-mode-common-hook
           '(lambda ()
              ;; センテンスの終了である ';' を入力したら、自動改行+インデント
+			 (setq tab-width 4)
+			 (setq indent-tabs-mode t)     
              (c-toggle-auto-hungry-state 1)
 			 (c-toggle-auto-state 1)
              ;; RET キーで自動改行+インデント
              (define-key c-mode-base-map "\C-m" 'newline-and-indent)))
              
-(add-hook 'c-mode-hook '(lambda () (setq tab-width 4)))
-(add-hook 'c++-mode-hook '(lambda () (setq tab-width 4)))
 ;; C++ style
 (add-hook 'c++-mode-hook
           '(lambda()
              (c-set-style "stroustrup")
-             (setq indent-tabs-mode t)     
              (c-set-offset 'innamespace 0)   ; namespace {}の中はインデントしない
              (c-set-offset 'arglist-close 0) ; 関数の引数リストの閉じ括弧はインデントしない
              (define-key c++-mode-map "/" 'self-insert-command) ; javadoc風コメント
@@ -26,7 +25,8 @@
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.ino\\'" . c++-mode))
-              
+(add-hook 'c-mode-hook '(lambda () (setq tab-width 4)))
+(add-hook 'c++-mode-hook '(lambda () (setq tab-width 4)))              
 ;; ;; ctags
 ;; ;;;; for ctags.el
 ;; (require 'ctags)
@@ -92,7 +92,7 @@
 (eval-after-load 'company
   '(add-to-list 'company-backends 'company-irony))
 
-(setq company-idle-delay .3)
+(setq company-idle-delay .2)
 
 
 (require 'company-irony-c-headers)
