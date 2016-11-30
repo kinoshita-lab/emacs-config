@@ -54,7 +54,7 @@
  '(irony-additional-clang-options (quote ("-std=c++11")))
  '(package-selected-packages
    (quote
-	(toml-mode dts-mode company-jedi helm-descbinds monokai-theme exec-path-from-shell helm-gtags cider projectile counsel jedi recentf-ext wandbox ripgrep racer company-racer rust-mode smartparens zeal-at-point emmet-mode js2-mode company-tern slime-company slime hydra company-irony-c-headers ggtags company-irony yasnippet-bundle company-go yasnippet company neotree win-switch avy rainbow-delimiters tuareg quack powerline tangotango-theme color-theme-tangotango dracula-theme markdown-mode+ merlin yascroll tabbar sr-speedbar ruby-tools ruby-end ruby-electric ruby-block ruby-additional popwin minimap init-loader idle-require go-eldoc go-direx git-rebase-mode git-gutter git-commit-mode git-commit flycheck-rust dired+ darcula-theme ctags csharp-mode color-theme-monokai clojure-mode-extra-font-locking cdb ccc cargo bind-key ag 4clojure)))
+	(helm-describe-modes toml-mode dts-mode company-jedi helm-descbinds monokai-theme exec-path-from-shell helm-gtags cider projectile counsel jedi recentf-ext wandbox ripgrep racer company-racer rust-mode smartparens zeal-at-point emmet-mode js2-mode company-tern slime-company slime hydra company-irony-c-headers ggtags company-irony yasnippet-bundle company-go yasnippet company neotree win-switch avy rainbow-delimiters tuareg quack powerline tangotango-theme color-theme-tangotango dracula-theme markdown-mode+ merlin yascroll tabbar sr-speedbar ruby-tools ruby-end ruby-electric ruby-block ruby-additional popwin minimap init-loader idle-require go-eldoc go-direx git-rebase-mode git-gutter git-commit-mode git-commit flycheck-rust dired+ darcula-theme ctags csharp-mode color-theme-monokai clojure-mode-extra-font-locking cdb ccc cargo bind-key ag 4clojure)))
  '(projectile-enable-caching t)
  '(quack-default-program "gosh -i")
  '(quack-fontify-style nil)
@@ -78,9 +78,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-level-1 ((t (:inherit default))))
- '(org-level-2 ((t (:inherit default :foreground "#A6E22E" :weight bold :height 1.2))))
- '(org-level-3 ((t (:inherit default :foreground "#66D9EF" :weight bold :height 1.15))))
+ '(org-level-1 ((t (:inherit default :foreground "#FD971F" :underline t :weight bold :height 1.0))))
+ '(org-level-2 ((t (:inherit default :foreground "#A6E22E" :weight bold :height 1.0))))
+ '(org-level-3 ((t (:inherit default :foreground "#66D9EF" :weight bold :height 1.0))))
  '(org-level-4 ((t (:inherit default :foreground "#E6DB74" :weight normal :height 1.1))))
  '(org-level-5 ((t (:inherit default :foreground "#A1EFE4"))))
  '(org-level-6 ((t (:inherit default :foreground "#A6E22E"))))
