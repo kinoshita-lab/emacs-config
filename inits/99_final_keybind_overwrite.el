@@ -1,6 +1,6 @@
 ;; overwrite DWIM key bindings!!!
-
+(require 'bind-key)
 ;; tabber
-(global-set-key (kbd "M-<right>") 'tabbar-forward-tab)
-(global-set-key (kbd "M-<left>") 'tabbar-backward-tab)
+(bind-key* (kbd "M-<right>") 'tabbar-forward-tab)
+(bind-key* (kbd "M-<left>") 'tabbar-backward-tab)
 
