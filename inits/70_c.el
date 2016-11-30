@@ -105,20 +105,32 @@
 
 
 ;; flycheck
-;; (add-hook 'c-mode-common-hook 'flycheck-mode)
-;; (add-hook 'c++-mode-hook (lambda()
-;;                            (setq flycheck-gcc-language-standard "c++11")
-;;                            (setq flycheck-clang-language-standard "c++11")))
-;; (defmacro flycheck-define-clike-checker (name command modes)
-;;   `(flycheck-define-checker ,(intern (format "%s" name))
-;;      ,(format "A %s checker using %s" name (car command))
-;;      :command (,@command source-inplace)
-;;      :error-patterns
-;;      ((warning line-start (file-name) ":" line ":" column ": 警告:" (message) line-end)
-;;       (error line-start (file-name) ":" line ":" column ": エラー:" (message) line-end))
-;;      :modes ',modes))
+(add-hook 'c-mode-common-hook 'flycheck-mode)
+(add-hook 'c++-mode-hook (lambda()
+                           (setq flycheck-gcc-language-standard "c++11")
+                           (setq flycheck-clang-language-standard "c++11")))
+(when (require 'flycheck nil 'noerror)
+  (custom-set-variables
+   ;; エラーをポップアップで表示
+   '(flycheck-display-errors-function
+     (lambda (errors)
+       (let ((messages (mapcar #'flycheck-error-message errors)))
+         (popup-tip (mapconcat 'identity messages "\n")))))
+   '(flycheck-display-errors-delay 0.5))
+  (define-key flycheck-mode-map (kbd "C-M-n") 'flycheck-next-error)
+  (define-key flycheck-mode-map (kbd "C-M-p") 'flycheck-previous-error)
+  (add-hook 'c-mode-common-hook 'flycheck-mode))
+(eval-after-load "flycheck"
+  '(progn
+	 (flycheck-pos-tip-mode)
+     (when (locate-library "flycheck-irony")
+       (flycheck-irony-setup))))
 
-;; (flycheck-define-clike-checker c++-g++-ja
-;; 			       ("g++" "-fsyntax-only" "-Wall" "-Wextra" "-std=c++11")
-;; 			       c++-mode)
-;; (add-to-list 'flycheck-checkers 'c++-g++-ja)
+(defun setup-flycheck-clang-project-path ()
+  (let ((root (ignore-errors (projectile-project-root))))
+    (when root
+      (add-to-list 
+       (make-variable-buffer-local 'flycheck-clang-include-path)
+       root))))
+
+(add-hook 'c++-mode-hook 'setup-flycheck-clang-project-path)

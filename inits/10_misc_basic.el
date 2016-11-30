@@ -197,3 +197,11 @@
 ;; subword/superword
 (setq global-subword-mode 1)
 (setq global-superword-mode 1)
+
+;; http://stackoverflow.com/questions/3417438/closing-all-other-buffers-in-emacs
+(defun kill-other-buffers ()
+  "Kill all other buffers."
+  (interactive)
+  (mapc 'kill-buffer 
+		(delq (current-buffer) 
+			  (remove-if-not 'buffer-file-name (buffer-list)))))
