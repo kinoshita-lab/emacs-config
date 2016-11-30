@@ -2,7 +2,11 @@
 ;;(ivy-mode 1)
 
 ;;; 下記は任意で有効化
+<<<<<<< HEAD
 ;; ;(global-set-key "\C-s" 'swiper)
+=======
+;(global-set-key "\C-s" 'swiper)
+>>>>>>> 5d3769f3d951b40e61eed52757983d6a6fffd273
 ;; (global-set-key (kbd "C-c C-r") 'ivy-resume)
 ;; (global-set-key (kbd "<f6>") 'ivy-resume)
 ;; (global-set-key (kbd "M-x") 'counsel-M-x)
@@ -17,7 +21,11 @@
 ;; (global-set-key (kbd "C-c k") 'counsel-ag)
 ;; (global-set-key (kbd "C-x l") 'counsel-locate)
 ;; (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+<<<<<<< HEAD
 ;; (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
+=======
+;; (define-key read-expression-map (kbd "C-r") 'counsel-expression-history) 
+>>>>>>> 5d3769f3d951b40e61eed52757983d6a6fffd273
 
 ; helm
 (when (require 'helm-config nil t)
