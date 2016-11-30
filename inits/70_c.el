@@ -92,7 +92,7 @@
 (eval-after-load 'company
   '(add-to-list 'company-backends 'company-irony))
 
-(setq company-idle-delay .3)
+(setq company-idle-delay .2)
 
 
 (require 'company-irony-c-headers)

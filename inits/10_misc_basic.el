@@ -194,3 +194,6 @@
 ;; recentf-ext
 (require 'recentf-ext)
 
+;; subword/superword
+(setq global-subword-mode 1)
+(setq global-superword-mode 1)

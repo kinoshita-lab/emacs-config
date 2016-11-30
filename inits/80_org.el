@@ -22,5 +22,3 @@
 						(find-file org-file)))
 
 
-
-(setq org-startup-truncated t)
