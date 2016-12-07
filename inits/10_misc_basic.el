@@ -51,8 +51,9 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 
-;; (require 'dired+)
-;; ;;sr-speedbar -> やめてneotree試し中
+(require 'dired+)
+
+;;sr-speedbar 
 (require 'sr-speedbar)
 (setq sr-speedbar-right-side nil)
 (setq speedbar-show-unknown-files t)
@@ -73,7 +74,7 @@
 ;; 俺設定
 (global-set-key "\C-m" 'newline-and-indent)
 ;; "C-t" でウィンドウを切り替える。初期値はtranspose-chars
-(define-key global-map (kbd "C-t") 'other-window)
+;;(define-key global-map (kbd "C-t") 'other-window)
 ;;; カーソルの点滅を止める
 (blink-cursor-mode 0)
 
@@ -192,7 +193,17 @@
 (setq ripgrep-arguments '("-S"))
 
 ;; recentf-ext
-(require 'recentf-ext)
+;; (require 'recentf-ext)
+(require 'recentf)
+(recentf-mode 1)
+
+(setq recentf-max-saved-items 2000) ;; 2000ファイルまで履歴保存する
+(setq recentf-auto-cleanup 'never)  ;; 存在しないファイルは消さない
+(setq recentf-exclude '("/recentf" "COMMIT_EDITMSG" "/.?TAGS" "^/sudo:" "/\\.emacs\\.d/games/*-scores" "/\\.emacs\\.d/\\.cask/"))
+(setq recentf-auto-save-timer (run-with-idle-timer 30 t 'recentf-save-list))
+
+(recentf-mode 1)
+(bind-key "C-c t" 'helm-recentf)
 
 ;; subword/superword
 (setq global-subword-mode 1)
