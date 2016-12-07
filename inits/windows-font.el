@@ -1,7 +1,7 @@
 ;;; font
 (set-face-attribute 'default nil
-					:font "Envy Code R"
+					:font "Terminus"
 					:weight 'regular
-          :height 140)
+          :height 120)
 (setq-default line-spacing .1)
-(set-face-attribute 'mode-line nil  :height 160)
+(set-face-attribute 'mode-line nil  :height 120)
