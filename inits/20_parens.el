@@ -1,8 +1,10 @@
-(require 'smartparens-config)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; smartparens/paredit etc.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'bind-key)
+(require 'smartparens-config)
 (require 'hydra)
 (smartparens-global-mode t)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; keybinding management
 (define-key smartparens-mode-map (kbd "C-M-f") 'sp-forward-sexp)
@@ -184,3 +186,10 @@
       (insert "* ")))
     (let ((o (sp--get-active-overlay)))
       (indent-region (overlay-start o) (overlay-end o)))))
+
+;; parinferを試そうとしたが私には早すぎた
+;; (require 'parinfer)
+;; (bind-key "C-," 'toggle-parinfer-mode)
+;; (add-hook 'clojure-mode-hook #'parinfer-mode)
+;; (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
+;; (add-hook 'scheme-mode-hook #'parinfer-mode)
