@@ -197,3 +197,14 @@
 ;; subword/superword
 (setq global-subword-mode 1)
 (setq global-superword-mode 1)
+
+;; ブックマークを変更したら即保存する
+(setq bookmark-save-flag 1)
+;; 超整理法
+(progn
+  (setq bookmark-sort-flag nil)
+  (defun bookmark-arrange-latest-top ()
+    (let ((latest ( bookmark-get-bookmark bookmark)))
+      (setq bookmark-alist (cons latest (delq latest bookmark-aliset))))
+    (bookmark-save))
+  (add-hook 'bookmark-after-jump-hook 'bookmark-arrange-latest-top))
