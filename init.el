@@ -48,8 +48,7 @@
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(desktop-save-mode t)
+ ;; If there is more than one, they won't work right
  '(eww-search-prefix "https://www.google.co.jp/search?q=")
  '(flycheck-display-errors-delay 0.5)
  '(flycheck-display-errors-function
