@@ -10,3 +10,7 @@
 
 (global-set-key [remap execute-extended-command] #'helm-smex)
 (global-set-key (kbd "M-X") #'helm-smex-major-mode-commands)
+
+										;
+										;
+

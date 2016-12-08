@@ -16,3 +16,6 @@ curl-cookie-jar
 /*.cache
 .emacs*
 /auto-save-list
+image-dired/
+kkcrc
+
