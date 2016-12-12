@@ -1,7 +1,8 @@
 (if window-system
 	(progn
 	  ;; theme これさきにやらないと変になる
-	  (load-theme 'tangotango t)
+	  (load-theme 'clarity t t)
+	  (enable-theme 'clarity)
 	  ;; font
 	  (set-face-attribute 'default nil
 					:font "Terminus"
