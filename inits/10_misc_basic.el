@@ -140,8 +140,7 @@
 (setq next-screen-context-lines 5)
 (setq scroll-preserve-screen-position t)
 
-;; tabber
-(tabbar-mode 1)
+
 ;; タブ上でマウスホイール操作無効
 (tabbar-mwheel-mode t)
 ;; グループ化しない
@@ -227,3 +226,6 @@
   (mapc 'kill-buffer 
 		(delq (current-buffer) 
 			  (remove-if-not 'buffer-file-name (buffer-list)))))
+
+;; elscreen
+(require 'elscreen)
