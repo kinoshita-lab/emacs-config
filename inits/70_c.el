@@ -4,6 +4,7 @@
           '(lambda ()
              ;; センテンスの終了である ';' を入力したら、自動改行+インデント
 			 (setq tab-width 4)
+			 (setq c-basic-offset 4)
 			 (setq indent-tabs-mode t)     
              (c-toggle-auto-hungry-state 1)
 			 (c-toggle-auto-state 1)
@@ -16,6 +17,7 @@
              (c-set-style "stroustrup")
              (c-set-offset 'innamespace 0)   ; namespace {}の中はインデントしない
              (c-set-offset 'arglist-close 0) ; 関数の引数リストの閉じ括弧はインデントしない
+			 (setq c-basic-offset 4)
              (define-key c++-mode-map "/" 'self-insert-command) ; javadoc風コメント
              (setq comment-style 'extra-line)
              (setq comment-continue " * ")
