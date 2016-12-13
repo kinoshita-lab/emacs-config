@@ -229,3 +229,4 @@
 
 ;; elscreen
 (require 'elscreen)
+(elscreen-start)

@@ -14,7 +14,7 @@
 	  (dolist (elt '(
 					 ("*Rounded M+*" . 0.8)
 					 ))
-		(add-to-list 'face-font-rescale-alist elt))
+		(add-to-list 'face-font-rescale-alist elt))))
 
 
 (require 'mozc)
