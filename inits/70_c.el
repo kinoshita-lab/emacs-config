@@ -116,6 +116,7 @@
   (define-key flycheck-mode-map (kbd "C-M-p") 'flycheck-previous-error)
   (add-hook 'c-mode-common-hook 'flycheck-mode))
 
+
 (eval-after-load "flycheck"
   '(progn
      (when (locate-library "flycheck-irony")

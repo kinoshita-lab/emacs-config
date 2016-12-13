@@ -230,3 +230,6 @@
 ;; elscreen
 (require 'elscreen)
 (elscreen-start)
+
+;; popup
+(require 'popup)
