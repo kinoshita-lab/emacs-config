@@ -229,3 +229,5 @@
 
 ;; elscreen
 (require 'elscreen)
+(setq elscreen-prefix-key (kbd "C-z"))
+(elscreen-start)
