@@ -10,12 +10,12 @@
           :height 160)
 	  ;; 日本語あああイイイ
 	  (set-fontset-font nil 'japanese-jisx0208
-						(font-spec :family "Rounded M+ 1m light"))
-	  ))
-
-
-(require 'mozc)
-(setq default-input-method "japanese-mozc")
+						(font-spec :family "Rounded M+ 1m medium"))
+	  (dolist (elt '(
+					 ("Rounded M+*" . 0.8)
+					 ))
+		(add-to-list 'face-font-rescale-alist elt))))
 	  
+
 
 
