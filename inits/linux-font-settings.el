@@ -18,3 +18,18 @@
 	  
 
 
+;; uim
+;; read uim.el
+(require 'uim)
+;; uncomment next and comment out previous to load uim.el on-demand
+;; (autoload 'uim-mode "uim" nil t)
+
+;; key-binding for activate uim (ex. C-\)
+(global-set-key "\C-\\" 'uim-mode)
+;; set inline candidates displaying mode as default
+(setq uim-candidate-display-inline t)
+
+;; Set Hiragana input mode at activating uim.
+(setq uim-default-im-prop '("action_anthy_utf8_hiragana"
+                            "action_google-cgiapi-jp_hiragana"
+                            "action_mozc_hiragana"))

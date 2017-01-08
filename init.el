@@ -19,6 +19,8 @@
 (setq load-path
       (cons (expand-file-name "~/.emacs.d/site-lisp/howm-1.4.3") load-path))
 
+(add-to-list 'load-path "~/.emacs.d/site-lisp/el-go")
+
 ;; add melpa and marmalade to elpa system
 (fset 'package-desc-vers 'package--ac-desc-version)
 (require 'package)
@@ -43,6 +45,10 @@
 (init-loader-load "~/.emacs.d/inits")
 ;;(init-loader-load)
              
+
+;; gnugo
+(require 'go)
+
 ;; M-x customizes
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -100,7 +106,7 @@
  '(irony-additional-clang-options (quote ("-std=c++11")))
  '(package-selected-packages
    (quote
-	(markdown-mode mozc helm-projectile ac-cider irony elscreen go-mode projectile-ripgrep color-theme-modern jedi-core clojure-mode color-theme ahungry-theme helm-smex parinfer magit flycheck-pos-tip flycheck-irony toml-mode dts-mode company-jedi helm-descbinds monokai-theme exec-path-from-shell helm-gtags cider projectile counsel jedi recentf-ext wandbox ripgrep racer company-racer rust-mode smartparens zeal-at-point emmet-mode js2-mode company-tern slime-company slime hydra company-irony-c-headers ggtags company-irony yasnippet-bundle company-go yasnippet company neotree win-switch avy rainbow-delimiters tuareg quack powerline tangotango-theme color-theme-tangotango dracula-theme markdown-mode+ merlin yascroll tabbar sr-speedbar ruby-tools ruby-end ruby-electric ruby-block ruby-additional popwin minimap init-loader idle-require go-eldoc go-direx git-gutter git-commit flycheck-rust dired+ darcula-theme ctags csharp-mode color-theme-monokai clojure-mode-extra-font-locking cdb ccc cargo bind-key ag 4clojure)))
+	(gnugo uimage markdown-mode mozc helm-projectile ac-cider irony elscreen go-mode projectile-ripgrep color-theme-modern jedi-core clojure-mode color-theme ahungry-theme helm-smex parinfer magit flycheck-pos-tip flycheck-irony toml-mode dts-mode company-jedi helm-descbinds monokai-theme exec-path-from-shell helm-gtags cider projectile counsel jedi recentf-ext wandbox ripgrep racer company-racer rust-mode smartparens zeal-at-point emmet-mode js2-mode company-tern slime-company slime hydra company-irony-c-headers ggtags company-irony yasnippet-bundle company-go yasnippet company neotree win-switch avy rainbow-delimiters tuareg quack powerline tangotango-theme color-theme-tangotango dracula-theme markdown-mode+ merlin yascroll tabbar sr-speedbar ruby-tools ruby-end ruby-electric ruby-block ruby-additional popwin minimap init-loader idle-require go-eldoc go-direx git-gutter git-commit flycheck-rust dired+ darcula-theme ctags csharp-mode color-theme-monokai clojure-mode-extra-font-locking cdb ccc cargo bind-key ag 4clojure)))
  '(projectile-enable-caching t)
  '(quack-default-program "gosh -i")
  '(quack-fontify-style (quote emacs))
