@@ -106,10 +106,14 @@
  '(irony-additional-clang-options (quote ("-std=c++11")))
  '(package-selected-packages
    (quote
+<<<<<<< HEAD
 	(gnugo uimage markdown-mode mozc helm-projectile ac-cider irony elscreen go-mode projectile-ripgrep color-theme-modern jedi-core clojure-mode color-theme ahungry-theme helm-smex parinfer magit flycheck-pos-tip flycheck-irony toml-mode dts-mode company-jedi helm-descbinds monokai-theme exec-path-from-shell helm-gtags cider projectile counsel jedi recentf-ext wandbox ripgrep racer company-racer rust-mode smartparens zeal-at-point emmet-mode js2-mode company-tern slime-company slime hydra company-irony-c-headers ggtags company-irony yasnippet-bundle company-go yasnippet company neotree win-switch avy rainbow-delimiters tuareg quack powerline tangotango-theme color-theme-tangotango dracula-theme markdown-mode+ merlin yascroll tabbar sr-speedbar ruby-tools ruby-end ruby-electric ruby-block ruby-additional popwin minimap init-loader idle-require go-eldoc go-direx git-gutter git-commit flycheck-rust dired+ darcula-theme ctags csharp-mode color-theme-monokai clojure-mode-extra-font-locking cdb ccc cargo bind-key ag 4clojure)))
+=======
+	(color-theme-modern ergoemacs-mode helm-projectile elscreen ahungry-theme helm-smex parinfer magit flycheck-pos-tip flycheck-irony toml-mode dts-mode company-jedi helm-descbinds monokai-theme exec-path-from-shell helm-gtags cider projectile counsel jedi recentf-ext wandbox ripgrep racer company-racer rust-mode smartparens zeal-at-point emmet-mode js2-mode company-tern slime-company slime hydra company-irony-c-headers ggtags company-irony yasnippet-bundle company-go yasnippet company neotree win-switch avy rainbow-delimiters tuareg quack powerline tangotango-theme color-theme-tangotango dracula-theme markdown-mode+ merlin yascroll tabbar sr-speedbar ruby-tools ruby-end ruby-electric ruby-block ruby-additional popwin minimap init-loader idle-require go-eldoc go-direx git-gutter git-commit flycheck-rust dired+ darcula-theme ctags csharp-mode color-theme-monokai clojure-mode-extra-font-locking cdb ccc cargo bind-key ag 4clojure)))
+>>>>>>> 0c9d44b58d60ceb570f902a73ef1db9bf4e22130
  '(projectile-enable-caching t)
  '(quack-default-program "gosh -i")
- '(quack-fontify-style (quote emacs))
+ '(quack-fontify-style nil)
  '(quack-manuals
    (quote
 	((r6rs "R5RS" "http://www.r6rs.org/final/html/r6rs/r6rs-Z-H-2.html#node_toc_start" nil)
@@ -130,7 +134,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(helm-source-header ((t (:background "dim gray" :foreground "white" :weight bold))))
  '(org-level-1 ((t (:inherit default :foreground "#FD971F" :underline t :weight bold :height 1.0))))
  '(org-level-2 ((t (:inherit default :foreground "#A6E22E" :weight bold :height 1.0))))
  '(org-level-3 ((t (:inherit default :foreground "#66D9EF" :weight bold :height 1.0))))
