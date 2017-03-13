@@ -3,6 +3,15 @@
 
 ;; workaround for 'reference to free variable helm-alive-p
 (defvar helm-alive-p)
+
+;; install org-wiki via following code
+;; (let ((url "https://raw.githubusercontent.com/caiorss/org-wiki/master/org-wiki.el"))     
+;;       (with-current-buffer (url-retrieve-synchronously url)
+;; 	(goto-char (point-min))
+;; 	(re-search-forward "^$")
+;; 	(delete-region (point) (point-min))
+;; 	(kill-whole-line)
+;; 	(package-install-from-buffer)))
 ;; server
 ; server start for emacs-client
 (require 'server)
@@ -44,10 +53,6 @@
 ;;          )))))
 (init-loader-load "~/.emacs.d/inits")
 ;;(init-loader-load)
-             
-
-;; gnugo
-(require 'go)
 
 ;; M-x customizes
 (custom-set-variables
@@ -88,6 +93,9 @@
 	  (".cxx"))
 	 ("\\.m\\'"
 	  (".h")))))
+ '(custom-safe-themes
+   (quote
+	("08b8807d23c290c840bbb14614a83878529359eaba1805618b3be7d61b0b0a32" default)))
  '(eww-search-prefix "https://www.google.co.jp/search?q=")
  '(flycheck-display-errors-delay 0.5)
  '(flycheck-display-errors-function
@@ -106,11 +114,7 @@
  '(irony-additional-clang-options (quote ("-std=c++11")))
  '(package-selected-packages
    (quote
-<<<<<<< HEAD
-	(gnugo uimage markdown-mode mozc helm-projectile ac-cider irony elscreen go-mode projectile-ripgrep color-theme-modern jedi-core clojure-mode color-theme ahungry-theme helm-smex parinfer magit flycheck-pos-tip flycheck-irony toml-mode dts-mode company-jedi helm-descbinds monokai-theme exec-path-from-shell helm-gtags cider projectile counsel jedi recentf-ext wandbox ripgrep racer company-racer rust-mode smartparens zeal-at-point emmet-mode js2-mode company-tern slime-company slime hydra company-irony-c-headers ggtags company-irony yasnippet-bundle company-go yasnippet company neotree win-switch avy rainbow-delimiters tuareg quack powerline tangotango-theme color-theme-tangotango dracula-theme markdown-mode+ merlin yascroll tabbar sr-speedbar ruby-tools ruby-end ruby-electric ruby-block ruby-additional popwin minimap init-loader idle-require go-eldoc go-direx git-gutter git-commit flycheck-rust dired+ darcula-theme ctags csharp-mode color-theme-monokai clojure-mode-extra-font-locking cdb ccc cargo bind-key ag 4clojure)))
-=======
-	(color-theme-modern ergoemacs-mode helm-projectile elscreen ahungry-theme helm-smex parinfer magit flycheck-pos-tip flycheck-irony toml-mode dts-mode company-jedi helm-descbinds monokai-theme exec-path-from-shell helm-gtags cider projectile counsel jedi recentf-ext wandbox ripgrep racer company-racer rust-mode smartparens zeal-at-point emmet-mode js2-mode company-tern slime-company slime hydra company-irony-c-headers ggtags company-irony yasnippet-bundle company-go yasnippet company neotree win-switch avy rainbow-delimiters tuareg quack powerline tangotango-theme color-theme-tangotango dracula-theme markdown-mode+ merlin yascroll tabbar sr-speedbar ruby-tools ruby-end ruby-electric ruby-block ruby-additional popwin minimap init-loader idle-require go-eldoc go-direx git-gutter git-commit flycheck-rust dired+ darcula-theme ctags csharp-mode color-theme-monokai clojure-mode-extra-font-locking cdb ccc cargo bind-key ag 4clojure)))
->>>>>>> 0c9d44b58d60ceb570f902a73ef1db9bf4e22130
+	(atom-one-dark-theme adoc-mode multi-term company-shell company-c-headers ddskk multiple-cursors pdf-tools yaml-mode flycheck org-wiki ox-html5slide gnugo uimage markdown-mode mozc helm-projectile ac-cider irony elscreen go-mode projectile-ripgrep color-theme-modern jedi-core clojure-mode color-theme ahungry-theme helm-smex parinfer magit flycheck-pos-tip flycheck-irony toml-mode dts-mode company-jedi helm-descbinds monokai-theme exec-path-from-shell helm-gtags cider projectile counsel jedi recentf-ext wandbox ripgrep racer company-racer rust-mode smartparens zeal-at-point emmet-mode js2-mode company-tern slime-company hydra company-irony-c-headers ggtags company-irony yasnippet-bundle company-go yasnippet company neotree win-switch avy rainbow-delimiters tuareg quack powerline tangotango-theme color-theme-tangotango dracula-theme markdown-mode+ merlin yascroll tabbar sr-speedbar ruby-tools ruby-end ruby-electric ruby-block ruby-additional popwin minimap init-loader idle-require go-eldoc go-direx git-gutter git-commit flycheck-rust dired+ darcula-theme ctags csharp-mode color-theme-monokai clojure-mode-extra-font-locking cdb ccc cargo bind-key ag 4clojure)))
  '(projectile-enable-caching t)
  '(quack-default-program "gosh -i")
  '(quack-fontify-style nil)

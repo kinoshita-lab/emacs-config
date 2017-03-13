@@ -3,3 +3,4 @@
 (require 'exec-path-from-shell)
 (let ((envs '("PATH" "VIRTUAL_ENV" "GOROOT" "GOPATH" "JAVA_HOME")))
   (exec-path-from-shell-copy-envs envs))
+

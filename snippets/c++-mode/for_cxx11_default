@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: for_cxx11_default
+# key: for_cxx11
+# --
+for (auto i = $1; i < $2; ++i) {
+	$0
+}

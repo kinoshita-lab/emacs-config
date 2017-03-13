@@ -50,8 +50,9 @@
     (add-to-history minibuffer-history-variable (minibuffer-contents))))
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-
+;; dired+
 (require 'dired+)
+(diredp-toggle-find-file-reuse-dir t)
 
 ;;sr-speedbar 
 (require 'sr-speedbar)
@@ -87,29 +88,6 @@
 ;; バッファ自動再読み込み
 (global-auto-revert-mode 1)
 
-
-(defface hlline-face
-  '((((class color)
-      (background dark))
-     (:background "dark slate gray"))
-    (((class color)
-      (background light))
-     (:background  "#98FB98"))
-    (t
-     ()))
-  "*Face used by hl-line.")
-
-(setq hl-line-face 'hlline-face)
-;; global-hl-line-modeをやめて高速化
-;; via http://rubikitch.com/2015/05/14/global-hl-line-mode-timer/
-(global-hl-line-mode 0)
-(defun global-hl-line-timer-function ()
-  (global-hl-line-unhighlight-all)
-  (let ((global-hl-line-mode t))
-    (global-hl-line-highlight)))
-(setq global-hl-line-timer
-      (run-with-idle-timer 0.03 t 'global-hl-line-timer-function))
-;; (cancel-timer global-hl-line-timer)
 
 
 ;; 括弧の補完 with skeleton-pair
@@ -153,7 +131,7 @@
 ;; ripgrep
 (require 'ripgrep)
 ;;; rgバイナリの位置
-(setq ripgrep-executable "e:/share/bin/rg.exe")
+(setq ripgrep-executable "/usr/bin/rg")
 ;;; rgに渡すオプション
 (setq ripgrep-arguments '("-S"))
 
@@ -199,3 +177,32 @@
 
 ;; popup
 (require 'popup)
+
+;; multiple-cursors
+(require 'multiple-cursors)
+
+;; asciidoc
+(require 'adoc-mode)
+
+;; clojure cookbook
+(defun increment-clojure-cookbook ()
+  "When reading the Clojure cookbook, find the next section, and
+close the buffer. If the next section is a sub-directory or in
+the next chapter, open Dired so you can find it manually."
+  (interactive)
+  (let* ((cur (buffer-name))
+     (split-cur (split-string cur "[-_]"))
+     (chap (car split-cur))
+     (rec (car (cdr split-cur)))
+     (rec-num (string-to-number rec))
+     (next-rec-num (1+ rec-num))
+     (next-rec-s (number-to-string next-rec-num))
+     (next-rec (if (< next-rec-num 10)
+               (concat "0" next-rec-s)
+             next-rec-s))
+     (target (file-name-completion (concat chap "-" next-rec) "")))
+    (progn 
+      (if (equal target nil)
+      (dired (file-name-directory (buffer-file-name)))
+    (find-file target))
+      (kill-buffer cur))))

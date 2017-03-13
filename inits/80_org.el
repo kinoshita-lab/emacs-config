@@ -1,3 +1,4 @@
+(require 'org)
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 
 ;; キー関係
@@ -12,3 +13,15 @@
 
 
 
+;; org wiki
+(require 'org-wiki)
+
+;; should be override on windows environment
+;; for MobileOrg
+(setq org-directory "~/Dropbox/notes/til")
+(setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
+(setq org-mobile-files
+      (list "~/Dropbox/notes/til/inbox.org"
+			"~/Dropbox/notes/til/guchi.org"
+            ))
+(setq org-mobile-inbox-for-pull "~/Dropbox/notes/til/from_mobile.org")
